@@ -12,6 +12,13 @@
 
 # testing
 /coverage
+/playwright-report/
+/test-results/
+/.test-postgres/
+/.test-postgres.log
+/.test-minio/
+/.test-minio*.log
+/.tools/
 
 # next.js
 /.next/
@@ -32,6 +39,7 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+!.env.example
 
 # vercel
 .vercel

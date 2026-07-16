@@ -1,5 +1,5 @@
-import AuthModule from "./components/AuthModule";
+import { redirect } from "next/navigation";
 
 export default function Home() {
-  return <AuthModule />;
+  redirect("/dashboard");
 }

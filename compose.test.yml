@@ -1,0 +1,28 @@
+services:
+  postgres-test:
+    image: postgres:18-alpine
+    environment:
+      POSTGRES_DB: dlms_test
+      POSTGRES_USER: dlms_test
+      POSTGRES_PASSWORD: dlms_test_password
+    ports:
+      - "55432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U dlms_test -d dlms_test"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+    tmpfs:
+      - /var/lib/postgresql/data
+
+  minio-test:
+    image: minio/minio:latest
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: dlms_test
+      MINIO_ROOT_PASSWORD: dlms_test_password
+    ports:
+      - "59000:9000"
+      - "59001:9001"
+    tmpfs:
+      - /data
